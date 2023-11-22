@@ -19,7 +19,6 @@ import tensorflow as tf
 
 from .utils import logging
 
-ALL_LAYERNORM_LAYERS = [tf.keras.layers.LayerNormalization]
 
 logger = logging.get_logger(__name__)
 
