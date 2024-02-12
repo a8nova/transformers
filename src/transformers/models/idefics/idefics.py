@@ -60,7 +60,7 @@ def run_idefics(py_or_tf="pt"):
  
   # Generation args
   bad_words_ids = processor.tokenizer(["<image>", "<fake_token_around_image>"], add_special_tokens=False).input_ids
-  print("\ninputs ", inputs)
+  #print("\ninputs ", inputs)
   generated_ids = model.generate(**inputs, bad_words_ids=bad_words_ids, max_length=100)
   generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)
   for i, t in enumerate(generated_text):
