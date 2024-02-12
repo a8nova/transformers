@@ -232,7 +232,7 @@ def load_pytorch_weights_in_tf2_model(
         )
         raise
 
-    pt_state_dict = {k: v.numpy() for k, v in pt_state_dict.items()}
+    pt_state_dict = {k: v.to(torch.float16).numpy() for k, v in pt_state_dict.items()}
     return load_pytorch_state_dict_in_tf2_model(
         tf_model,
         pt_state_dict,

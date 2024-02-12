@@ -167,6 +167,8 @@ class IdeficsImageProcessor(BaseImageProcessor):
         images = [self.normalize(x, mean=image_mean, std=image_std) for x in images]
         images = [to_channel_dimension_format(x, ChannelDimension.FIRST) for x in images]
         # TODO: this converts to torch tensors - switch to convert_to_tensors once it becomes available
-        images = BatchFeature(data={"pixel_values": images}, tensor_type=self.return_tensors)["pixel_values"]
+        # TODO: Below hardcoded tensor_type is a temporary hack since return_tensors isn't being
+        #       propagated and until I figure out why
+        images = BatchFeature(data={"pixel_values": images}, tensor_type="tf")["pixel_values"]
 
         return images
